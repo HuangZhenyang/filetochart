@@ -15,7 +15,7 @@ $(document).ready(function () {
     // 文件上传按钮绑定点击事件
     $('#fileUploadBtn').on('click', function () {
         // 判断是否有选择文件
-        if ($('#fileInput').val() === "") {
+        if (!checkFileSelected()) {
             alert("请选择文件");
         } else {
             let f = document.getElementById("fileInput").files;
@@ -255,6 +255,10 @@ function change(axisPara, timesPara) {
  * @param btnValPara 按钮的value
  * */
 function changeButtonEvent(btnValPara) {
+    if (!checkFileUploaded()) {
+        alert("请选择文件上传");
+        return ;
+    }
     let btnVal = btnValPara;
     let axisVal = document.getElementById("axisSelect").value;
     let compressTimes = 0.5;
@@ -286,7 +290,37 @@ function changeButtonEvent(btnValPara) {
  * 重置图表数据为初始数据
  * */
 function resetData() {
+    if (!checkFileUploaded()) {
+        alert("请选择文件上传");
+        return ;
+    }
     let data = Object.assign({}, initData);
     currData = Object.assign({}, initData);
     setDataToDataChart(data);
+}
+
+
+/**
+ * 检查是否选择文件
+ * @return true:有选择文件；  false:没有选择文件
+ * */
+function checkFileSelected() {
+    if ($('#fileInput').val() === "") {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+/**
+ * 检查是否上传了文件
+ * @return true:已经上传文件；  false:没有选择文件
+ * */
+function checkFileUploaded() {
+    if(initData === null){
+        return false;
+    }else{
+        return true;
+    }
 }
