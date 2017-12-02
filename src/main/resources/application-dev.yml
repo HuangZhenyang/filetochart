@@ -17,6 +17,6 @@ server:
   port: 8081
 
 # 自己的属性
-filePath: D:\\课件\\软件构造\\filetochart\\src\\main\\resources\\static\\uploadfile\\
+fileDirectoryPath: D:\\课件\\软件构造\\filetochart\\src\\main\\resources\\static\\uploadfile\\
 
 

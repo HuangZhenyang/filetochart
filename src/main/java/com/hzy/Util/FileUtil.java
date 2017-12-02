@@ -1,8 +1,6 @@
 package com.hzy.Util;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -29,6 +27,8 @@ public class FileUtil {
         int read_num = 0; // 每次读取的个数，为DataInputStream.read()函数的返回值
         ArrayList<Short> shortArrList = new ArrayList<>(); // 存储转换后的short
         Short tempShort = 0; // 存储函数返回值的temp变量
+        byte b1 = 0;
+        byte b2 = 0;
 
         try {
             // 利用DataInputStream类读取二进制文件要使用到FileInputStream类
@@ -47,7 +47,9 @@ public class FileUtil {
                     }
                     // 每两个byte转一个short
                     for (int i = 0; i < read_num; i = i + 2) {
-                        tempShort = getShort(fileBytesArray, i);
+                        b1 = fileBytesArray[i+1];
+                        b2 = fileBytesArray[i];
+                        tempShort = getShort(b1, b2);
                         shortArrList.add(tempShort);
                     }
                 }
@@ -68,12 +70,14 @@ public class FileUtil {
     /**
      * 将byte数组中的两个byte转到short
      *
-     * @param bytes 需要转换的bytes数组
-     * @param index 从第index位开始转换
+     * @param b1Para 第index+1位转换
+     * @param b2Para 第index位转换
      * @return short  返回转换后的short值
      */
-    private static short getShort(byte[] bytes, int index) {
-        return (short) (((bytes[index + 1] << 8) | bytes[index] & 0xff));
+    private static short getShort(byte b1Para, byte b2Para) {
+        byte b1 = b1Para;
+        byte b2 = b2Para;
+        return (short) (((b1 << 8) | b2 & 0xff));
     }
 
     /**

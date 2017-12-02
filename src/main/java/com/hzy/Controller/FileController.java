@@ -16,10 +16,10 @@ import java.util.ArrayList;
  */
 @RestController
 public class FileController {
-    @Value("${filePath}")
-    private String filePath;
+    @Value("${fileDirectoryPath}")
+    private String fileDirectoryPath;
     /**
-     * 处理文件上传
+     * 处理文件上传,保存文件,返回处理过的数据
      * @param multipartFilePara  文件
      * @return 返回处理完的short数组以及文件信息
      * */
@@ -29,6 +29,8 @@ public class FileController {
         String fileName = multipartFile.getOriginalFilename(); // 文件名
         long fileSize = multipartFile.getSize();
         JSONObject jsonObject = new JSONObject(); // 返回的结果
+        ArrayList<Short> shortArrayList = null;
+
         // 保存文件
         Boolean saveFileResult = FileUtil.saveFile(multipartFile, fileName);
         if(!saveFileResult){
@@ -36,13 +38,20 @@ public class FileController {
             jsonObject.put("reason", "文件保存失败");
             return jsonObject.toString();
         }
-        // 以二进制形式打开文件，获取short数组
-        ArrayList<Short> shortArrayList = FileUtil.readFileAsBinary(filePath + fileName);
+
+        shortArrayList = processFileToShort(fileDirectoryPath + fileName);
 
         jsonObject.put("ok", "true");
         jsonObject.put("data", shortArrayList);
         jsonObject.put("fileName", fileName);
         jsonObject.put("fileSize", fileSize);
         return jsonObject.toString();
+    }
+
+    private ArrayList<Short> processFileToShort(String filePathPara){
+        String filePath = filePathPara;
+        // 以二进制形式打开文件，获取short数组
+        ArrayList<Short> shortArrayList = FileUtil.readFileAsBinary(filePath);
+        return shortArrayList;
     }
 }
