@@ -98,20 +98,16 @@ public class FileUtil {
                     out.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    // return "{\"ok\":\"false\"}";
                     return false;
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                // return "{\"ok\":\"false\"}";
                 return false;
             }
 
-            // return "{\"ok\":\"true\"}";
             return true;
 
         } else {
-            // return "{\"ok\":\"false\"}";
             return false;
         }
     }
