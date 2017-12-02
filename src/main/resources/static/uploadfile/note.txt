@@ -1,0 +1,66 @@
+csdn：qq_35056292	hzy1997320,cs
+
+http://learn.jquery.com/
+ubuntu hzy#19970320,cs
+
+########################
+Çø¿éÁ´
+02£º¾«Í¨±ÈÌØ±Ò
+http://mp.weixin.qq.com/s/_ICuv7LQ5eTZ0jte1Ie58w
+03£ºhyperledger
+http://mp.weixin.qq.com/s/pq-w889N9NZ1Q8A-4nfYqw
+05:ÒÔÌ«·»
+http://mp.weixin.qq.com/s/abi7prZzQxTSvp5hYEkVLA
+########################
+
+wangqian@zoeyclara.partner.onmschina.cn
+abc121???
+
+42.159.233.161
+
+librarian
+Li123456?
+
+
+huangzhenyang@huangzhenyang.partner.onmschina.cn
+Hzy1997320#
+
+huangzhenyang
+Li123456?
+
+42.159.236.121
+
+ÌÚÑ¶ÔÆ139.199.162.139
+
+
+
+
+https://www.hackerrank.com/contests/projecteuler/challenges/euler002
+
+https://www.hackerrank.com/contests/projecteuler/challenges/euler025/submissions/code/7282534
+
+
+https://www.hackerrank.com/contests/projecteuler/challenges/euler048
+
+
+https://www.hackerrank.com/challenges/bfsshortreach
+
+169.254.176.92
+
+mstsc  Ô¶³Ì×ÀÃæ
+
+
+c = map(int,raw_input().strip().split(' '))
+
+´ò¿ªµçÄÔ£¬Á¬½Ócmcc£¬´ò¿ª360wifi,puttyÁ¬½Ó,ÃüÁîÐÐÏÂÊäÈëtightvncserver,ÔÙÔÚµçÄÔÀïÓÃvnc
+
+
+sudo raspivid -o - -t 0 -w 640 -h 360 -fps 25|cvlc -vvv stream:///dev/stdin --sout \'#standard{access=http,mux=ts,dst=:8090
+
+
+18728471504  ÃÜÂë£º7fUVmF
+
+
+loading  123456789
+
+ÃÜÔ¿£ºAIzaSyBLxFyA6F-UoFGrB1nSJqc8gdIiUOpGsm4

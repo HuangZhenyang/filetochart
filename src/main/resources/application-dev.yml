@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/binaryfiletochart
+    username: root
+    password: 123456
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+#  http:
+#    multipart:
+#      enabled: true
+#      max-file-size: 3MB
+#      max-request-size: 3MB
+
+server:
+  port: 8081
+
+# 自己的属性
+filePath: D:\\课件\\软件构造\\filetochart\\src\\main\\resources\\static\\uploadfile\\
+
+
