@@ -277,11 +277,11 @@ function changeButtonEvent(btnValPara) {
         dataChanged = change(axisVal, extendTimes);
     }
 
-    setDataZoomStartAndEnd(btnVal); // 改变dataZoom
+
 
     if (axisVal === "x") {
         data.xAxisData = Object.assign([], dataChanged);
-
+        setDataZoomStartAndEnd(btnVal); // 改变dataZoom
     } else if (axisVal === "y") {
         data.yAxisData = Object.assign([], dataChanged);
     }
