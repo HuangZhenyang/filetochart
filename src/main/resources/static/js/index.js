@@ -301,6 +301,7 @@ function resetData() {
         alert("请选择文件上传");
         return;
     }
+
     let data = Object.assign({}, initData);
     currData = Object.assign({}, initData);
     setDataToDataChart(data);
@@ -311,6 +312,10 @@ function resetData() {
             end: initDataZoomEnd
         }
     });
+
+    // 将当前的起始也设置成初始的值
+    dataZoomStart = initDataZoomStart;
+    dataZoomEnd = initDataZoomEnd;
 }
 
 
