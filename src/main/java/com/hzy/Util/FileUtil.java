@@ -1,6 +1,7 @@
 package com.hzy.Util;
 
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -47,7 +48,7 @@ public class FileUtil {
                     }
                     // 每两个byte转一个short
                     for (int i = 0; i < read_num; i = i + 2) {
-                        b1 = fileBytesArray[i+1];
+                        b1 = fileBytesArray[i + 1];
                         b2 = fileBytesArray[i];
                         tempShort = getShort(b1, b2);
                         shortArrList.add(tempShort);
@@ -82,8 +83,9 @@ public class FileUtil {
 
     /**
      * 保存文件
+     *
      * @param multipartFilePara 文件
-     * @param fileNamePara 文件名
+     * @param fileNamePara      文件名
      * @return 返回存储的结果
      */
     public static Boolean saveFile(MultipartFile multipartFilePara, String fileNamePara) {

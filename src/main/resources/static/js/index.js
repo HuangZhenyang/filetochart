@@ -6,7 +6,12 @@
 let initData = null; // 初始图表数据
 let currData = null; // 当前的图表数据
 let dataChart = echarts.init(document.getElementById("dataChart")); // 图表
-let firstTime = true;
+let firstTime = true; // 判断是不是第一次调用setDataToChart()函数
+let initDataZoomStart = 40; // datazoom范围的起始值
+let initDataZoomEnd = 55; // datazoom范围的结束值
+let dataZoomStart = 40; // datazoom范围的起始值
+let dataZoomEnd = 55; // datazoom范围的结束值
+
 
 $(document).ready(function () {
     // 初始化图表
@@ -83,8 +88,8 @@ function initDataChart() {
             handleColor: 'rgba(128,43,16,0.8)',
             //xAxisIndex:[],
             //yAxisIndex:[],
-            start: 40,
-            end: 55
+            start: dataZoomStart,
+            end: dataZoomEnd
         },
         xAxis: [
             {
@@ -257,7 +262,7 @@ function change(axisPara, timesPara) {
 function changeButtonEvent(btnValPara) {
     if (!checkFileUploaded()) {
         alert("请选择文件上传");
-        return ;
+        return;
     }
     let btnVal = btnValPara;
     let axisVal = document.getElementById("axisSelect").value;
@@ -268,13 +273,15 @@ function changeButtonEvent(btnValPara) {
 
     if (btnVal === "compress") {
         dataChanged = change(axisVal, compressTimes);
-
     } else if (btnVal === "extend") {
         dataChanged = change(axisVal, extendTimes);
     }
 
+    setDataZoomStartAndEnd(btnVal); // 改变dataZoom
+
     if (axisVal === "x") {
         data.xAxisData = Object.assign([], dataChanged);
+
     } else if (axisVal === "y") {
         data.yAxisData = Object.assign([], dataChanged);
     }
@@ -287,16 +294,23 @@ function changeButtonEvent(btnValPara) {
 
 
 /**
- * 重置图表数据为初始数据
+ * 重置图表数据为初始数据,重置dataZoom
  * */
 function resetData() {
     if (!checkFileUploaded()) {
         alert("请选择文件上传");
-        return ;
+        return;
     }
     let data = Object.assign({}, initData);
     currData = Object.assign({}, initData);
     setDataToDataChart(data);
+
+    dataChart.setOption({
+        dataZoom: {
+            start: initDataZoomStart,
+            end: initDataZoomEnd
+        }
+    });
 }
 
 
@@ -318,9 +332,36 @@ function checkFileSelected() {
  * @return true:已经上传文件；  false:没有选择文件
  * */
 function checkFileUploaded() {
-    if(initData === null){
+    if (initData === null) {
         return false;
-    }else{
+    } else {
         return true;
     }
+}
+
+
+/**
+ * 设置dataZoom起始结束范围,只有在x轴数据缩放时才需要
+ * @param btnValPara 变化的倍数
+ * */
+function setDataZoomStartAndEnd(btnValPara) {
+    let btnVal = btnValPara;
+
+    if (btnVal === "compress") {
+        let dataZoomMid = (dataZoomStart + dataZoomEnd) / 2;
+        dataZoomStart = 2 * dataZoomStart - dataZoomMid; // dataZoomStart - (dataZoomMid - dataZoomStart);
+        dataZoomEnd = 2 * dataZoomEnd - dataZoomMid; // dataZoomEnd + (dataZoomEnd - dataZoomMid);
+    } else if (btnVal === "extend") {
+        let dataZoomMid = (dataZoomStart + dataZoomEnd) / 2;
+        dataZoomStart = 0.5 * (dataZoomStart + dataZoomMid); // dataZoomStart + (dataZoomMid - dataZoomStart) / 2;
+        dataZoomEnd = 0.5 * (dataZoomEnd + dataZoomMid); // dataZoomEnd - (dataZoomEnd - dataZoomMid) / 2;
+    }
+
+    dataChart.setOption({
+        dataZoom: {
+            start: dataZoomStart,
+            end: dataZoomEnd
+        }
+    });
+
 }

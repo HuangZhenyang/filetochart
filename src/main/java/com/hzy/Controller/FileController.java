@@ -18,13 +18,15 @@ import java.util.ArrayList;
 public class FileController {
     @Value("${fileDirectoryPath}")
     private String fileDirectoryPath;
+
     /**
      * 处理文件上传,保存文件,返回处理过的数据
-     * @param multipartFilePara  文件
+     *
+     * @param multipartFilePara 文件
      * @return 返回处理完的short数组以及文件信息
-     * */
+     */
     @PostMapping("/file-upload")
-    public String fileUpload(@RequestParam("file") MultipartFile multipartFilePara){
+    public String fileUpload(@RequestParam("file") MultipartFile multipartFilePara) {
         MultipartFile multipartFile = multipartFilePara;
         String fileName = multipartFile.getOriginalFilename(); // 文件名
         long fileSize = multipartFile.getSize();
@@ -33,7 +35,7 @@ public class FileController {
 
         // 保存文件
         Boolean saveFileResult = FileUtil.saveFile(multipartFile, fileName);
-        if(!saveFileResult){
+        if (!saveFileResult) {
             jsonObject.put("ok", "false");
             jsonObject.put("reason", "文件保存失败");
             return jsonObject.toString();
@@ -48,7 +50,7 @@ public class FileController {
         return jsonObject.toString();
     }
 
-    private ArrayList<Short> processFileToShort(String filePathPara){
+    private ArrayList<Short> processFileToShort(String filePathPara) {
         String filePath = filePathPara;
         // 以二进制形式打开文件，获取short数组
         ArrayList<Short> shortArrayList = FileUtil.readFileAsBinary(filePath);

@@ -17,4 +17,18 @@
 4. 打开浏览器，访问`localhost:8081/index`，将文件上传即可看到效果（注意，文件有大小限制）
 
 ## **不足/TODO**
-由于需要Echarts的datazoom功能，但是在对x轴进行波形压缩、扩展处理时，datazoom没改变，所以效果看不太出来；
+~~由于需要Echarts的datazoom功能，但是在对x轴进行波形压缩、扩展处理时，datazoom没改变，所以效果看不太出来；~~
+
+## **更新记录**
+**2017.12.3更新：**
+1. 解决对x轴进行波形压缩/扩展时波形没有变化的问题</br>
+通过对dataZoom的起始结束范围重新设置：</br>
+```
+dataChart.setOption({
+    dataZoom: {
+        start: dataZoomStart,
+        end: dataZoomEnd
+    }
+});
+```
+2. 修复对x轴进行波形压缩/扩展时，没有对dataZoom复原的BUG;

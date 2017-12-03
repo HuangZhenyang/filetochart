@@ -13,9 +13,9 @@ public class PageController {
 
     /**
      * 返回index页面
-     * */
+     */
     @GetMapping("/index")
-    public String getIndexPage(){
+    public String getIndexPage() {
         return "index";
     }
 
