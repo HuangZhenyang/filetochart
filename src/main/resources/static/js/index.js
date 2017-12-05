@@ -321,6 +321,9 @@ function resetData() {
         dataZoom: [{
             start: initDataZoomStart,
             end: initDataZoomEnd
+        },{
+            start: 0,
+            end: 100
         }]
     });
 
