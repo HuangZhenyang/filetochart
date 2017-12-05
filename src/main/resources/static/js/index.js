@@ -1,5 +1,6 @@
 'use strict';
 
+
 /*
  * 全局变量
  * */
@@ -95,7 +96,7 @@ function initDataChart() {
                 id: 'dataZoomY',
                 type: 'slider',
                 yAxisIndex: [0],
-                filterMode: 'empty'
+                filterMode: 'filter'
             }
         ],
         xAxis: [
@@ -188,7 +189,7 @@ function setDataToDataChart(dataPara) {
             data: yArr
         }]
     });
-    // 设置x/y轴固定值，在压缩扩展时明显一点
+    // 设置x/y轴固定值，在压缩时明显一点  TODO:扩展的时候将firstTime设置为true
     if (firstTime === true) {
         let yMax = Math.max.apply(null, yAxisData);
         let yMin = Math.min.apply(null, yAxisData);
@@ -237,7 +238,7 @@ function setFileSize(fileSizePara) {
 
 /**
  * 压缩：默认为乘以0.5；
- * 扩展：默认为乘以2；
+ * 扩展：默认为乘以2；如果为y轴，设置firstTime为true，这样的话扩展的时候就可以一起联动
  * @param axisPara 需要压缩/扩展的轴；
  * @param timesPara 倍数，为0.5或者2
  * @return 返回处理好的x轴/y轴数据
@@ -252,6 +253,9 @@ function change(axisPara, timesPara) {
         dataToChange = Object.assign([], data.xAxisData);
     } else if (axis === "y") {
         dataToChange = Object.assign([], data.yAxisData);
+        if(times === 2){
+            firstTime = true;
+        }
     }
 
     for (let i = 0; i < dataToChange.length; i++) {
@@ -284,6 +288,7 @@ function changeButtonEvent(btnValPara) {
         dataChanged = change(axisVal, extendTimes);
     }
 
+    // 更改当前图表数据currData
     if (axisVal === "x") {
         data.xAxisData = Object.assign([], dataChanged);
         setDataZoomStartAndEnd(btnVal); // 改变dataZoom
@@ -308,6 +313,8 @@ function resetData() {
 
     let data = Object.assign({}, initData);
     currData = Object.assign({}, initData);
+    firstTime = true;
+
     setDataToDataChart(data);
 
     dataChart.setOption({
@@ -322,31 +329,6 @@ function resetData() {
     dataZoomEnd = initDataZoomEnd;
 }
 
-
-/**
- * 检查是否选择文件
- * @return true:有选择文件；  false:没有选择文件
- * */
-function checkFileSelected() {
-    if ($('#fileInput').val() === "") {
-        return false;
-    } else {
-        return true;
-    }
-}
-
-
-/**
- * 检查是否上传了文件
- * @return true:已经上传文件；  false:没有选择文件
- * */
-function checkFileUploaded() {
-    if (initData === null) {
-        return false;
-    } else {
-        return true;
-    }
-}
 
 
 /**

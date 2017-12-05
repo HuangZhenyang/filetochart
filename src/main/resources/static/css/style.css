@@ -7,7 +7,7 @@ Premium: http://www.gridgum.com
 */
 
 /* Import fonts */
-@import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
+/*@import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);*/
 
 /* BASIC THEME CONFIGURATION */
 body {
@@ -266,7 +266,7 @@ ul.top-menu > li > .logout {
     top:15px;
 }
 .active .dcjq-icon {
-    background: url("../img/nav-expand.png") no-repeat bottom;
+    /*background: url("../img/nav-expand.png") no-repeat bottom;*/
     border-radius:3px;
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
@@ -696,7 +696,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .log-arrow-up {
-    background: url("../img/arrow-up.png") no-repeat;
+    /*background: url("../img/arrow-up.png") no-repeat;*/
     width: 20px;
     height: 11px;
     position: absolute;
@@ -1696,7 +1696,7 @@ PANELS CONFIGURATIONS
 
 .project:hover .photo-wrapper {
   background-color: #68dff0;
-	background-image:url(../img/zoom.png);
+	/*background-image:url(../img/zoom.png);*/
 	background-repeat:no-repeat;
 	background-position:center;
 	top: 0;
@@ -1792,8 +1792,8 @@ label {
     position: relative;
     text-align: left;
     width: 80px;
-    -webkit-mask: url('../img/mask.png') 0 0 no-repeat;
-    mask: url('../img/mask.png') 0 0 no-repeat;
+    /*-webkit-mask: url('../img/mask.png') 0 0 no-repeat;*/
+    /*mask: url('../img/mask.png') 0 0 no-repeat;*/
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -1899,8 +1899,8 @@ label {
 .switch-square {
     border-radius: 6px;
     -webkit-border-radius: 6px;
-    -webkit-mask: url('../img/mask.png') 0 0 no-repeat;
-    mask: url('../img/mask.png') 0 0 no-repeat;
+    /*-webkit-mask: url('../img/mask.png') 0 0 no-repeat;
+    mask: url('../img/mask.png') 0 0 no-repeat;*/
 }
 .switch-square > div.switch-off label {
     border-color: #7f8c9a;
