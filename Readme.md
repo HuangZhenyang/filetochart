@@ -31,7 +31,7 @@ dataChart.setOption({
     }
 });
 ```
-2. 修复对x轴进行波形压缩/扩展时，没有对dataZoom复原的BUG;
+2. 修复对x轴进行波形压缩/扩展时，没有对dataZoom复原的BUG;</br>
 **2017.12.5更新：**
 3. 增加y轴dataZoom控件
 4. 添加滚轮缩放功能
