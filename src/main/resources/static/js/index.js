@@ -74,7 +74,7 @@ function initDataChart() {
             bottom: '3%',
             containLabel: true
         },
-        dataZoom: {
+        dataZoom: [{
             show: true,
             realtime: true,
             //orient: 'vertical',   // 'horizontal'
@@ -89,8 +89,15 @@ function initDataChart() {
             //xAxisIndex:[],
             //yAxisIndex:[],
             start: dataZoomStart,
-            end: dataZoomEnd
-        },
+            end: dataZoomEnd,
+            filterMode: 'filter'
+        }, {
+                id: 'dataZoomY',
+                type: 'slider',
+                yAxisIndex: [0],
+                filterMode: 'empty'
+            }
+        ],
         xAxis: [
             {
                 type: 'category',
@@ -277,8 +284,6 @@ function changeButtonEvent(btnValPara) {
         dataChanged = change(axisVal, extendTimes);
     }
 
-
-
     if (axisVal === "x") {
         data.xAxisData = Object.assign([], dataChanged);
         setDataZoomStartAndEnd(btnVal); // 改变dataZoom
@@ -286,8 +291,7 @@ function changeButtonEvent(btnValPara) {
         data.yAxisData = Object.assign([], dataChanged);
     }
     currData = Object.assign({}, data);
-    console.log("btnVal:  ", btnVal);
-    console.log("data:  ", data);
+
     setDataToDataChart(data);
 
 }
@@ -307,10 +311,10 @@ function resetData() {
     setDataToDataChart(data);
 
     dataChart.setOption({
-        dataZoom: {
+        dataZoom: [{
             start: initDataZoomStart,
             end: initDataZoomEnd
-        }
+        }]
     });
 
     // 将当前的起始也设置成初始的值
@@ -363,10 +367,10 @@ function setDataZoomStartAndEnd(btnValPara) {
     }
 
     dataChart.setOption({
-        dataZoom: {
+        dataZoom: [{
             start: dataZoomStart,
             end: dataZoomEnd
-        }
+        }]
     });
 
 }
