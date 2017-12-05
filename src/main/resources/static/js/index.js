@@ -93,11 +93,21 @@ function initDataChart() {
             end: dataZoomEnd,
             filterMode: 'filter'
         }, {
-                id: 'dataZoomY',
-                type: 'slider',
-                yAxisIndex: [0],
-                filterMode: 'filter'
-            }
+            id: 'dataZoomY',
+            type: 'slider',
+            yAxisIndex: [0],
+            filterMode: 'filter'
+        }, {
+            type: 'inside',
+            xAxisIndex: [0],
+            start: 1,
+            end: 35
+        },{
+            type: 'inside',
+            yAxisIndex: [0],
+            start: 29,
+            end: 36
+        }
         ],
         xAxis: [
             {
@@ -253,7 +263,7 @@ function change(axisPara, timesPara) {
         dataToChange = Object.assign([], data.xAxisData);
     } else if (axis === "y") {
         dataToChange = Object.assign([], data.yAxisData);
-        if(times === 2){
+        if (times === 2) {
             firstTime = true;
         }
     }
@@ -321,7 +331,7 @@ function resetData() {
         dataZoom: [{
             start: initDataZoomStart,
             end: initDataZoomEnd
-        },{
+        }, {
             start: 0,
             end: 100
         }]
@@ -331,7 +341,6 @@ function resetData() {
     dataZoomStart = initDataZoomStart;
     dataZoomEnd = initDataZoomEnd;
 }
-
 
 
 /**
