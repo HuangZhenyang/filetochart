@@ -1,7 +1,6 @@
 package com.hzy.Util;
 
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -23,11 +22,11 @@ public class FileUtil {
 
         String filePath = filePathPara;
         File file = new File(filePath);
-        int sizeOfEachRead = 1024; // 每次读取的字节数
-        byte[] fileBytesArray = new byte[sizeOfEachRead]; // 一个byte为8字节，两个为16字节，// 刚刚好为一个short的大小
-        int read_num = 0; // 每次读取的个数，为DataInputStream.read()函数的返回值
-        ArrayList<Short> shortArrList = new ArrayList<>(); // 存储转换后的short
-        Short tempShort = 0; // 存储函数返回值的temp变量
+        int sizeOfEachRead = 1024;                          // 每次读取的字节数
+        byte[] fileBytesArray = new byte[sizeOfEachRead];   // 一个byte为8字节，两个为16字节，// 刚刚好为一个short的大小
+        int read_num = 0;                                   // 每次读取的个数，为DataInputStream.read()函数的返回值
+        ArrayList<Short> shortArrList = new ArrayList<>();  // 存储转换后的short
+        Short tempShort = 0;                                // 存储函数返回值的temp变量
         byte b1 = 0;
         byte b2 = 0;
 
@@ -35,6 +34,7 @@ public class FileUtil {
             // 利用DataInputStream类读取二进制文件要使用到FileInputStream类
             // 构造FileInputStream，字节流读写文本文件
             FileInputStream fileInputStream = new FileInputStream(file);
+
             // DataInputStream类是FileInputStream的子类，它是FileInputStream类的扩展
             // 构造DataInputStream，二进制读写文件
             DataInputStream dataInputStream = new DataInputStream(fileInputStream);
@@ -54,7 +54,6 @@ public class FileUtil {
                         shortArrList.add(tempShort);
                     }
                 }
-                System.out.println("shortArrList's size:   " + shortArrList.size());
 
             } catch (IOException e) {
                 e.printStackTrace();

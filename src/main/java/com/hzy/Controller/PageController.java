@@ -13,6 +13,7 @@ public class PageController {
 
     /**
      * 返回index页面
+     * @return String  html页面
      */
     @GetMapping("/index")
     public String getIndexPage() {

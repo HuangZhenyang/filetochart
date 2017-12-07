@@ -150,23 +150,16 @@
                     <form id="fileUploadForm" action="/file-upload" method="post" enctype="multipart/form-data">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <input id="fileInput" type="file" name="file" class="col-lg-5 col-md-5 col-sm-5"/>
-                            <input id="fileUploadBtn" type="button" value="上传文件" class="file col-lg-2 col-md-2 col-sm-2"/>
+                            <input id="fileUploadBtn" type="button" value="上传文件"
+                                   class="file col-lg-2 col-md-2 col-sm-2"/>
                         </div>
                     </form>
-                    <!--波形压缩与扩展-->
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                        <select id="axisSelect">
-                            <option value="x">x轴</option>
-                            <option value="y">y轴</option>
-                        </select>
-                        &nbsp;&nbsp;
-                        <!--压缩：乘以0.5，扩展：乘以2-->
-                        <button id="compressBtn" value="compress" class="btn btn-info" onclick="changeButtonEvent(this.value)">压缩</button>
-                        &nbsp;&nbsp;
-                        <button id="extendBtn" value="extend" class="btn btn-info" onclick="changeButtonEvent(this.value)">扩展</button>
+
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2" >
-                        <button id="resetDataBtn" value="resetData" class="btn btn-success" onclick="resetData()">重置</button>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button  value="originalResetBtn" class="btn btn-success" onclick="resetDataFunc(this.value)">重置
+                        </button>
                     </div>
                 </div>
 
@@ -177,9 +170,47 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="panel-body text-center">
                             <div class="content-panel">
-                                <!--<button class="btn btn-info" style="float: left;margin-left: 4px;"><i class="fa fa-eye">查看具体</i>
-                                </button>
-                                <br style="clear:both"/>-->
+                                <div id="originalDataChart" style="width: auto;height: 500px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- col-lg-12 end -->
+                </div>
+                <!-- row mt end -->
+                <hr>
+                <!-- row mt -->
+                <div class="row mt text-center">
+                    <!--波形压缩与扩展-->
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <select id="axisSelect">
+                            <option value="x">x轴</option>
+                            <option value="y">y轴</option>
+                        </select>
+                        &nbsp;&nbsp;
+                        <!--压缩：乘以0.5，扩展：乘以2-->
+                        <button id="compressBtn" value="compress" class="btn btn-info"
+                                onclick="changeButtonEvent(this.value)">压缩
+                        </button>
+                        &nbsp;&nbsp;
+                        <button id="extendBtn" value="extend" class="btn btn-info"
+                                onclick="changeButtonEvent(this.value)">扩展
+                        </button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button id="resetDataBtn" value="dataResetBtn" class="btn btn-success" onclick="resetDataFunc(this.value)">重置
+                        </button>
+                    </div>
+                </div>
+                <!--row mt-->
+                <!--<h4 class="my-z-index-class" style="float:left"><i-->
+                <div class="row mt">
+                    <!-- col-lg-12 -->
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="panel-body text-center">
+                            <div class="content-panel">
                                 <div id="dataChart" style="width: auto;height: 500px;"></div>
                             </div>
                         </div>
